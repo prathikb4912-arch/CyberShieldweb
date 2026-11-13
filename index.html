@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CyberShield – Detect Threats. Protect People.</title>
+<style>
+:root{color-scheme:dark;--bg:#04060f;--bg2:#0a1030;--card:#0c1438;--bd:#1b2a6b;--tx:#e6ecff;--mu:#93a0cf;--cy:#22d3ee;--bl:#3b82f6;--pu:#a855f7;--ok:#34d399;--wn:#fbbf24;--rd:#f43f5e;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:radial-gradient(ellipse at top,var(--bg2),var(--bg) 60%) fixed;color:var(--tx);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100vh}
+a{color:var(--cy)}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:rgba(4,6,15,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--bd)}
+.bar{max-width:1100px;margin:auto;display:flex;align-items:center;gap:12px;padding:10px 16px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:1.2rem;color:var(--tx);text-decoration:none}
+.logo svg{filter:drop-shadow(0 0 6px var(--cy))}
+nav{display:flex;gap:4px;flex-wrap:wrap;margin-left:auto}
+nav a{color:var(--mu);text-decoration:none;padding:6px 10px;border-radius:8px;font-size:.88rem}
+nav a:hover,nav a.on{color:var(--cy);background:rgba(34,211,238,.1)}
+main{max-width:1100px;margin:auto;padding:24px 16px 60px}
+section.page{display:none;animation:in .4s ease}section.page.on{display:block}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1}}
+h1{font-size:clamp(2rem,6vw,3.4rem);line-height:1.1;margin:.2em 0}
+h2{margin-top:0;font-size:1.6rem}
+.grad{background:linear-gradient(90deg,var(--cy),var(--bl),var(--pu));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero{text-align:center;padding:40px 0 20px}
+.hero .shield{animation:pulse 3s ease-in-out infinite}
+@keyframes pulse{50%{filter:drop-shadow(0 0 22px var(--cy))}}
+.tag{color:var(--cy);letter-spacing:.12em;text-transform:uppercase;font-size:.9rem}
+.btn{display:inline-block;border:0;cursor:pointer;color:#02101c;font-weight:700;font-size:1rem;padding:12px 24px;border-radius:12px;background:linear-gradient(90deg,var(--cy),var(--bl));box-shadow:0 0 18px rgba(34,211,238,.45);text-decoration:none;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 0 28px rgba(34,211,238,.7)}
+.btn.alt{background:transparent;color:var(--cy);border:1px solid var(--cy);box-shadow:none}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card{background:linear-gradient(160deg,var(--card),#080d27);border:1px solid var(--bd);border-radius:16px;padding:18px;box-shadow:0 0 20px rgba(59,130,246,.08)}
+.card:hover{border-color:var(--pu)}
+.card h3{margin:.2em 0 .4em}
+.badge{display:inline-block;font-size:.72rem;font-weight:800;letter-spacing:.06em;padding:3px 9px;border-radius:99px;border:1px solid}
+.b-work{color:var(--ok);border-color:var(--ok)}.b-demo{color:var(--wn);border-color:var(--wn)}.b-fut{color:var(--pu);border-color:var(--pu)}.b-off{color:var(--rd);border-color:var(--rd)}
+textarea,input{width:100%;background:#050a1f;color:var(--tx);border:1px solid var(--bd);border-radius:10px;padding:12px;font:inherit}
+textarea{min-height:140px;resize:vertical}
+textarea:focus,input:focus{outline:2px solid var(--cy);border-color:transparent}
+.note{background:rgba(168,85,247,.1);border:1px solid var(--pu);border-radius:12px;padding:12px 14px;color:#d9c2ff;margin:14px 0;font-size:.93rem}
+.res{margin-top:16px}
+.level{font-size:1.5rem;font-weight:800;padding:10px 16px;border-radius:12px;display:inline-block;border:2px solid}
+.L-LOW{color:var(--ok);border-color:var(--ok);box-shadow:0 0 14px rgba(52,211,153,.4)}
+.L-MEDIUM{color:var(--wn);border-color:var(--wn);box-shadow:0 0 14px rgba(251,191,36,.4)}
+.L-HIGH{color:var(--rd);border-color:var(--rd);box-shadow:0 0 14px rgba(244,63,94,.5)}
+mark{background:rgba(244,63,94,.25);color:#ffd0d8;padding:0 3px;border-radius:4px}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.net{display:flex;flex-direction:column;gap:0;align-items:stretch}
+.node{border-left:3px solid var(--cy)}
+.link{text-align:center;color:var(--pu);font-size:.85rem;padding:4px}
+.chip{display:inline-block;background:rgba(34,211,238,.12);color:var(--cy);border-radius:99px;padding:2px 10px;margin:2px;font-size:.85rem}
+footer{border-top:1px solid var(--bd);text-align:center;color:var(--mu);font-size:.85rem;padding:20px 16px}
+ul{padding-left:20px}li{margin:4px 0}
+label{display:block;margin:10px 0 4px;color:var(--mu);font-size:.9rem}
+</style>
+</head>
+<body>
+<header><div class="bar">
+<a class="logo" href="#home"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="1.8"><path d="M12 2l8 3v6c0 5-3.4 9-8 11-4.6-2-8-6-8-11V5z"/><rect x="9" y="10" width="6" height="5" rx="1"/><path d="M10 10V8a2 2 0 014 0v2"/></svg>CyberShield</a>
+<nav id="nav">
+<a href="#home">Home</a><a href="#scam-detector">Scam Detector</a><a href="#link-scanner">Link Scanner</a><a href="#number-check">Number Check</a><a href="#network">Scam Network</a><a href="#realtime">Real-Time</a><a href="#tips">Safety Tips</a><a href="#report">Report</a><a href="#about">About</a><a href="#contact">Contact</a><a href="#privacy-policy">Privacy</a>
+</nav></div></header>
+
+<main>
+<section class="page" id="home">
+<div class="hero">
+<svg class="shield" width="96" height="96" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="1.4"><path d="M12 2l8 3v6c0 5-3.4 9-8 11-4.6-2-8-6-8-11V5z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>
+<h1><span class="grad">CyberShield</span></h1>
+<p class="tag">Detect Threats. Protect People.</p>
+<p style="max-width:640px;margin:12px auto 22px;color:var(--mu)">An AI-assisted cybersecurity helper concept for students, families and everyday internet users. Paste a suspicious message or link and learn what warning signs to look for.</p>
+<a class="btn" href="#scam-detector">🔍 Scan for Threats</a>
+</div>
+<div class="note"><b>Proposed innovation project.</b> Each feature below is labelled so you can tell what works today from what is a demo or a future plan.</div>
+<div class="grid">
+<div class="card"><span class="badge b-work">WORKING · RULE-BASED</span><h3>🛡 Scam Detector</h3><p>Checks message wording against known scam patterns. Runs in your browser.</p></div>
+<div class="card"><span class="badge b-work">WORKING · BASIC CHECKS</span><h3>🔗 Link Scanner</h3><p>Looks for suspicious URL structure. Reputation database not connected.</p></div>
+<div class="card"><span class="badge b-work">FORMAT CHECK ONLY</span><h3>📞 Number Check</h3><p>Validates number format. Spam database not connected.</p></div>
+<div class="card"><span class="badge b-demo">DEMO DATA</span><h3>🕸 Scam Network</h3><p>Shows how reports could be linked into campaigns.</p></div>
+<div class="card"><span class="badge b-fut">FUTURE FEATURE</span><h3>🧩 Real-Time Protection</h3><p>Browser warnings, not built yet.</p></div>
+</div>
+<h2 style="margin-top:32px">Recent awareness tips</h2>
+<div class="grid" id="hometips"></div>
+</section>
+
+<section class="page" id="scam-detector">
+<h2>🛡 AI Scam Detector <span class="badge b-work">WORKING · RULE-BASED</span></h2>
+<p>Paste a suspicious SMS, WhatsApp message, email or online offer.</p>
+<div class="note">🔒 Never paste passwords, OTPs, PINs or card numbers. Emails, phone numbers and long digit strings are masked automatically before analysis. Analysis happens entirely in your browser; nothing is sent anywhere.</div>
+<textarea id="msg" placeholder="Paste the message here…" maxlength="5000"></textarea>
+<div class="row"><button class="btn" id="goMsg">Analyse message</button><button class="btn alt" id="clrMsg">Clear</button></div>
+<div class="res" id="msgRes"></div>
+<p style="color:var(--mu);font-size:.88rem">This tool uses keyword and pattern rules, not a language model. A server-side AI API (key kept on the server) is the planned next step and is not connected.</p>
+</section>
+
+<section class="page" id="link-scanner">
+<h2>🔗 Smart Link Scanner <span class="badge b-work">BASIC CHECKS</span></h2>
+<p>Enter a web address. Do not open suspicious links to “test” them.</p>
+<input id="url" placeholder="https://example.com/page" maxlength="2000">
+<div class="row"><button class="btn" id="goUrl">Check link</button></div>
+<div class="res" id="urlRes"></div>
+<div class="note"><span class="badge b-off">NOT CONNECTED</span> Known-malicious-site databases (such as Google Safe Browsing or VirusTotal) need a server-side API key. None is connected, so no reputation lookup is performed.</div>
+</section>
+
+<section class="page" id="number-check">
+<h2>📞 Number Intelligence <span class="badge b-work">FORMAT VALIDATION</span></h2>
+<p>Check whether a phone number matches an international numbering plan. This does not identify the owner or prove whether a caller is trustworthy.</p>
+<label for="numRegion">Country/region (used when the number has no + country code)</label>
+<select id="numRegion" style="width:100%;background:#050a1f;color:var(--tx);border:1px solid var(--bd);border-radius:10px;padding:12px;font:inherit">
+<option value="IN" selected>India (+91)</option><option value="US">United States (+1)</option><option value="GB">United Kingdom (+44)</option><option value="CA">Canada (+1)</option><option value="AU">Australia (+61)</option><option value="AE">United Arab Emirates (+971)</option><option value="SG">Singapore (+65)</option><option value="DE">Germany (+49)</option><option value="FR">France (+33)</option><option value="JP">Japan (+81)</option>
+</select>
+<label for="num">Phone number</label>
+<input id="num" placeholder="9876543210 or +919876543210" maxlength="30" inputmode="tel" autocomplete="off">
+<div class="row"><button class="btn" id="goNum">Check number</button></div>
+<div class="res" id="numRes"></div>
+<div class="note"><span class="badge b-off">REPUTATION NOT CONNECTED</span> This upgrade checks number structure using a phone-number metadata library when internet access is available. It does not query spam reports, carrier records, or identify a private person. A reputation API and secure server backend would be needed for that.</div>
+</section>
+
+<section class="page" id="network">
+<h2>🕸 Global Scam Connection Network <span class="badge b-demo">DEMO DATA</span></h2>
+<p>Proposed feature: compare reports from different users to spot a possible shared campaign. The three reports below are invented for illustration. No real reporting database exists yet.</p>
+<div class="net" id="net"></div>
+<div class="card" style="margin-top:16px;border-color:var(--pu)"><h3>Possible connected campaign <span class="badge b-demo">DEMO</span></h3><div id="netOut"></div></div>
+</section>
+
+<section class="page" id="realtime">
+<h2>🧩 Real-Time Protection <span class="badge b-fut">FUTURE FEATURE</span></h2>
+<p>Not built. The idea: a browser extension that checks a page’s address against reputation services and warns you before you enter details on a suspected scam page.</p>
+<ul><li>Warning banner on suspected phishing pages</li><li>Alert when a form asks for OTPs or PINs on an unfamiliar domain</li><li>Family mode with simple explanations for children and older adults</li></ul>
+<p>Needs: extension development, a threat-intelligence API, privacy review and user testing.</p>
+</section>
+
+<section class="page" id="tips">
+<h2>Cyber Safety Tips</h2>
+<div class="grid" id="tipsAll"></div>
+</section>
+
+<section class="page" id="report">
+<h2>📣 Report a Scam <span class="badge b-off">NO SUBMISSION BACKEND</span></h2>
+<p>Reports cannot be submitted to CyberShield yet. This tool prepares a cleaned report you can copy and send to your bank, your mobile carrier or your national fraud-reporting service.</p>
+<label for="rtype">Type</label>
+<select id="rtype" style="width:100%;background:#050a1f;color:var(--tx);border:1px solid var(--bd);border-radius:10px;padding:12px"><option>SMS</option><option>WhatsApp</option><option>Email</option><option>Online offer</option><option>Other</option></select>
+<label for="rtext">What happened? (no passwords, OTPs or PINs)</label>
+<textarea id="rtext" maxlength="3000"></textarea>
+<div class="row"><button class="btn" id="goRep">Prepare cleaned report</button></div>
+<div class="res" id="repRes"></div>
+<p style="color:var(--mu);font-size:.88rem">Deleting a report: nothing is stored, so there is nothing to delete. A deletion option will be added if server storage is ever built.</p>
+</section>
+
+<section class="page" id="about">
+<h2>About CyberShield</h2>
+<p>CyberShield is a <b>proposed innovation project</b> exploring how AI could help beginners recognise online scams. This site is a prototype, not a security product.</p>
+<div class="grid">
+<div class="card"><span class="badge b-work">WORKING</span><ul><li>Rule-based message analysis</li><li>Basic URL structure checks</li><li>Phone-number format check</li><li>Personal-data masking</li></ul></div>
+<div class="card"><span class="badge b-demo">DEMO</span><ul><li>Scam connection network</li></ul></div>
+<div class="card"><span class="badge b-fut">PLANNED</span><ul><li>Server backend with secure API keys</li><li>AI language-model analysis</li><li>Threat-intelligence lookups</li><li>Spam-number databases</li><li>Real reporting database</li><li>Browser extension</li></ul></div>
+</div>
+<div class="note">A result from CyberShield never proves a message or link is safe. When in doubt, contact the organisation through its official website or phone number.</div>
+</section>
+
+<section class="page" id="contact">
+<h2>Contact Us <span class="badge b-off">NOT LIVE</span></h2>
+<p>CyberShield is a project proposal and has no contact channel yet. When one exists it will be listed here. If you are being scammed right now, contact your bank and your local police or national cybercrime reporting service.</p>
+</section>
+
+<section class="page" id="privacy-policy">
+<h2>Privacy Policy &amp; Protection</h2>
+<ul>
+<li><b>We never ask for passwords, OTPs or banking PINs.</b> If a CyberShield page seems to, close it.</li>
+<li><b>Current handling:</b> text you enter is processed in your browser and is not sent to a server, stored or shared by this prototype.</li>
+<li><b>Masking:</b> emails, phone numbers, long digit strings and OTP-style codes are replaced with placeholders before analysis.</li>
+<li><b>Deletion:</b> there are no stored reports to delete. If a backend is added, this page will describe what is stored, for how long, and how to delete it.</li>
+<li><b>Future AI analysis:</b> if an external AI or threat-intelligence API is connected, this policy must be updated to say what is sent to it.</li>
+</ul>
+<p style="color:var(--mu)">This is a prototype policy and not legal advice.</p>
+</section>
+</main>
+<footer>CyberShield · Proposed innovation project · Prototype, not a guarantee of safety · “Detect Threats. Protect People.”</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/libphonenumber-js@1.11.20/bundle/max.js"></script>
+<script>
+const $=id=>document.getElementById(id);
+const esc=s=>s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const TIPS=[["🔐","Never share OTPs","Banks and services never need your one-time code by message or call."],["⏱","Beware of urgency","“Act now or lose your account” is a classic pressure tactic."],["🔗","Check the real address","Look at the domain before the first single slash, not the page design."],["📞","Call back on a trusted number","Use the number on your card or official site, not the one in the message."],["🎁","Too good to be true","Unexpected prizes and refunds that ask for a fee are scams."],["🔑","Use unique passwords","A password manager and two-factor authentication limit the damage of a leak."],["👨‍👩‍👧","Talk to family","Scammers target people who feel embarrassed. Sharing makes everyone safer."],["📣","Report it","Report scams to your carrier, bank or national reporting service."]];
+const card=t=>`<div class="card"><div style="font-size:1.6rem">${t[0]}</div><h3>${t[1]}</h3><p>${t[2]}</p></div>`;
+$("hometips").innerHTML=TIPS.slice(0,3).map(card).join("");$("tipsAll").innerHTML=TIPS.map(card).join("");
+
+// router
+function route(){let h=(location.hash||"#home").slice(1);if(!$(h))h="home";
+document.querySelectorAll(".page").forEach(p=>p.classList.toggle("on",p.id===h));
+document.querySelectorAll("#nav a").forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+h));scrollTo(0,0)}
+addEventListener("hashchange",route);route();
+
+// masking
+function mask(t){return t.replace(/[\w.+-]+@[\w-]+\.[\w.-]+/g,"[EMAIL]").replace(/\b(otp|pin|code|cvv)\b[^\d]{0,12}\d{3,8}/gi,"$1 [CODE]").replace(/\+?\d[\d\s().-]{7,}\d/g,"[NUMBER]")}
+
+// scam rules
+const RULES=[
+[/\b(urgent|immediately|act now|within \d+ ?(hours?|hrs?|minutes?)|last warning|expires? (today|soon)|final notice)\b/gi,2,"Urgency or deadline pressure","Scammers rush you so you do not stop to think."],
+[/\b(otp|one[- ]time (password|code)|pin|cvv|password|passcode|verification code)\b/gi,3,"Request involving a secret code or password","Real organisations never ask you to share these."],
+[/\b(kyc|account (is |will be )?(suspended|blocked|locked|closed|limited)|verify your (account|identity)|update your (details|account|kyc))\b/gi,3,"Account suspension / verification threat","Common phishing hook used to push you to a fake page."],
+[/\b(you (have )?won|winner|lottery|prize|congratulations|jackpot|claim your (reward|gift))\b/gi,3,"Prize or reward claim","Unexpected winnings that ask for action are almost always scams."],
+[/\b(gift ?cards?|bitcoin|crypto|wire transfer|western union|processing fee|advance fee|send money)\b/gi,3,"Unusual payment method or fee","Gift cards, crypto and transfers are hard to reverse."],
+[/\b(click (here|the link|below)|tap (here|the link)|log ?in (here|now)|follow (this|the) link)\b/gi,2,"Prompt to click a link","Links in unexpected messages can lead to fake sites."],
+[/\b(bit\.ly|tinyurl\.com|t\.co|goo\.gl|is\.gd|cutt\.ly|rb\.gy)\S*/gi,2,"Shortened link","Short links hide the real destination."],
+[/\b(arrest|legal action|police|court|fine|penalty|tax (refund|office)|customs|parcel (is )?(held|stuck)|delivery (failed|fee))\b/gi,2,"Threat or official-sounding pretext","Scammers imitate authorities and delivery firms."],
+[/\b(dear (customer|user|sir|madam|friend)|valued customer)\b/gi,1,"Generic greeting","Real services often use your name."],
+[/\b(work from home|earn \$?\d+|guaranteed (income|returns?)|easy money|investment opportunity|double your)\b/gi,3,"Too-good-to-be-true earning offer","Guaranteed returns do not exist."],
+[/\b(do not (tell|share)|keep (this )?(secret|confidential)|don'?t tell anyone)\b/gi,2,"Request for secrecy","Isolating you from advice is a manipulation tactic."]];
+function analyse(raw){const t=mask(raw);let score=0;const found=[],hits=new Set();
+RULES.forEach(([re,w,name,why])=>{const m=t.match(re);if(m){score+=w;found.push({name,why});m.forEach(x=>hits.add(x))}});
+const level=score>=6?"HIGH":score>=3?"MEDIUM":"LOW";return{t,score,found,level,hits:[...hits]}}
+function highlight(t,hits){let o=esc(t);hits.sort((a,b)=>b.length-a.length).forEach(h=>{const e=esc(h).replace(/[.*+?^${}()|[\]\\]/g,"\\$&");o=o.replace(new RegExp(e,"gi"),m=>"<mark>"+m+"</mark>")});return o}
+$("goMsg").onclick=()=>{const v=$("msg").value.trim(),out=$("msgRes");
+if(v.length<10){out.innerHTML='<div class="note">Please paste at least a full sentence of the message.</div>';return}
+const r=analyse(v);
+const acts={HIGH:["Do not click links, reply, or call numbers in the message.","Do not share any codes or personal details.","Contact the organisation using its official website or phone number.","Report and delete the message."],MEDIUM:["Treat it with caution and do not click links yet.","Verify through the organisation’s official channel.","Ask a trusted person if unsure."],LOW:["No common scam patterns matched, but this does not prove the message is safe.","Still verify unexpected requests through official channels."]}[r.level];
+out.innerHTML=`<div class="card"><span class="level L-${r.level}">Risk: ${r.level}</span>
+<h3>Message after privacy masking</h3><p style="white-space:pre-wrap">${highlight(r.t,r.hits)}</p>
+<h3>Why</h3>${r.found.length?"<ul>"+r.found.map(f=>`<li><b>${f.name}.</b> ${f.why}</li>`).join("")+"</ul>":"<p>No known scam wording patterns were found.</p>"}
+<h3>Suspicious phrases</h3><p>${r.hits.length?r.hits.map(h=>`<span class="chip">${esc(h)}</span>`).join(""):"None found"}</p>
+<h3>Recommended actions</h3><ul>${acts.map(a=>`<li>${a}</li>`).join("")}</ul></div>`};
+$("clrMsg").onclick=()=>{$("msg").value="";$("msgRes").innerHTML=""};
+
+// URL scan
+const SHORT=["bit.ly","tinyurl.com","t.co","goo.gl","is.gd","cutt.ly","rb.gy","ow.ly"],BADTLD=["zip","xyz","top","click","work","loan","gq","tk","ml","cf","icu","buzz"],KW=["login","verify","secure","account","update","bank","kyc","wallet","payment","confirm","reward","gift"],BRANDS=["paypal","google","amazon","apple","microsoft","netflix","whatsapp","facebook","instagram"];
+$("goUrl").onclick=()=>{const out=$("urlRes");let v=$("url").value.trim();
+if(!v){out.innerHTML='<div class="note">Please enter a web address.</div>';return}
+if(!/^[a-z][a-z0-9+.-]*:\/\//i.test(v))v="http://"+v;let u;
+try{u=new URL(v)}catch(e){out.innerHTML='<div class="note">That does not look like a valid web address.</div>';return}
+if(!/^https?:$/.test(u.protocol)){out.innerHTML='<div class="note">Only http and https addresses can be checked.</div>';return}
+const f=[],h=u.hostname.toLowerCase(),parts=h.split("."),tld=parts[parts.length-1],base=parts.slice(-2).join(".");
+if(u.protocol==="http:"&&/^http:\/\//i.test($("url").value.trim()))f.push(["Not using HTTPS","Traffic is not encrypted. Many scam pages also use HTTPS, so this is only one signal."]);
+if(/^\d{1,3}(\.\d{1,3}){3}$/.test(h))f.push(["Address is an IP number","Legitimate services rarely use raw IP addresses."]);
+if(h.includes("xn--"))f.push(["Punycode domain","May imitate a known name using lookalike characters."]);
+if(v.includes("@")&&u.username)f.push(["Contains @ in the address","Can disguise the real destination."]);
+if(parts.length>4)f.push(["Many subdomains","Long chains can hide the real domain."]);
+if(SHORT.includes(base))f.push(["URL shortener","The real destination is hidden."]);
+if(BADTLD.includes(tld))f.push(["Domain ending often abused","."+tld+" is frequently used in scam campaigns, though many sites using it are fine."]);
+if((h.match(/-/g)||[]).length>=3)f.push(["Many hyphens in domain","Common in throwaway scam domains."]);
+if(KW.some(k=>h.includes(k)))f.push(["Sensitive keyword in domain","Words like login, verify or bank in the domain are often used to look official."]);
+BRANDS.forEach(b=>{if(h.includes(b)&&!new RegExp("(^|\\.)"+b+"\\.(com|net|org|co\\.uk)$").test(h))f.push(["Possible brand imitation","The domain contains “"+b+"” but is not that brand’s usual domain."])});
+if(/[a-z][01][a-z]/.test(base.split(".")[0])&&BRANDS.some(b=>base.replace(/0/g,"o").replace(/1/g,"l").includes(b)))f.push(["Digit-for-letter swap","Numbers replacing letters can imitate a known brand."]);
+if(u.href.length>120)f.push(["Very long URL","Long URLs can hide the destination."]);
+const lvl=f.length>=3?"HIGH":f.length>=1?"MEDIUM":"LOW";
+out.innerHTML=`<div class="card"><p><b>Checked host:</b> ${esc(h)}</p><span class="level L-${lvl}">${lvl==="LOW"?"No warning signs found":lvl+" caution"}</span>
+${f.length?"<h3>Warning signs</h3><ul>"+f.map(x=>`<li><b>${x[0]}.</b> ${x[1]}</li>`).join("")+"</ul>":"<p>The basic checks found nothing unusual.</p>"}
+<h3>Recommendation</h3><p>${lvl==="LOW"?"This does not mean the link is safe. Only a reputation database can reveal known malicious sites, and none is connected. Open links only if you expected them.":"Do not enter passwords or personal details. Reach the organisation by typing its official address yourself."}</p></div>`};
+
+// International phone-number format validation (not a scam-reputation lookup)
+$("goNum").onclick=()=>{
+ const out=$("numRes"),v=$("num").value.trim(),region=$("numRegion").value;
+ if(!v){out.innerHTML='<div class="note">Enter a phone number to check.</div>';return}
+ if(!/^[+\d\s().-]+$/.test(v)){out.innerHTML='<div class="note">Use only digits, spaces, brackets, dots, hyphens and an optional leading +.</div>';return}
+ let parsed=null,lib=window.libphonenumber;
+ if(lib && typeof lib.parsePhoneNumberFromString==="function"){
+   try{parsed=lib.parsePhoneNumberFromString(v,region)}catch(e){}
+ }
+ if(parsed){
+   const valid=parsed.isValid(),possible=parsed.isPossible();
+   const country=parsed.country?new Intl.DisplayNames([navigator.language||"en"],{type:"region"}).of(parsed.country):"Could not determine";
+   const status=valid?"Valid numbering format":possible?"Possible length, but not fully valid":"Invalid numbering format";
+   const level=valid?"LOW":"MEDIUM";
+   out.innerHTML=`<div class="card"><span class="level L-${level}">${esc(status)}</span><p><b>Country/region:</b> ${esc(country||"Could not determine")}</p><p><b>Country calling code:</b> +${esc(parsed.countryCallingCode)}</p><p><b>International format:</b> ${esc(parsed.formatInternational())}</p><p><b>National format:</b> ${esc(parsed.formatNational())}</p><p><b>Number type:</b> ${esc(parsed.getType()||"Not specified by numbering data")}</p><p><b>Scam/spam reputation:</b> <span style="color:var(--wn)">Not checked — no reputation database connected</span></p><h3>What this result means</h3><p>${valid?"The number matches the numbering plan data. This does not prove that the number is active, belongs to the caller, or is safe.":"The number did not pass full numbering-plan validation. Check that you selected the correct region and entered the number correctly."}</p><h3>Safety advice</h3><ul><li>Never share OTPs, PINs or passwords with callers.</li><li>Do not send money because of an urgent call or message.</li><li>Verify organisations using contact details from their official website.</li></ul></div>`;
+ } else {
+   const digits=v.replace(/\D/g,"");
+   const plausible=digits.length>=7&&digits.length<=15;
+   out.innerHTML=`<div class="card"><span class="level L-MEDIUM">Basic check only</span><p>${plausible?"The number length looks plausible, but detailed validation is unavailable because the numbering library did not load.":"The number length does not look plausible."}</p><p><b>Scam/spam reputation:</b> Not checked.</p><p>Connect to the internet and reload the page for international numbering validation.</p><h3>Safety advice</h3><ul><li>Never share OTPs, PINs or passwords with callers.</li><li>Verify organisations through their official contact details.</li></ul></div>`;
+ }
+};
+
+// network demo
+const DEMO=[{u:"User A",t:"Your bank account will be blocked today. Click the link to verify your details now."},{u:"User B",t:"Urgent KYC update required. Verify your account within 24 hours or it will be suspended."},{u:"User C",t:"Payment failed. Click here to verify your account and update payment details immediately."}];
+const STOP=new Set("your the will and now our you for this that with within".split(" "));
+const words=t=>new Set(t.toLowerCase().match(/[a-z]{4,}/g).filter(w=>!STOP.has(w)));
+$("net").innerHTML=DEMO.map((d,i)=>`<div class="card node"><span class="badge b-demo">DEMO DATA</span> <b>${d.u}</b><p style="margin:6px 0 0">“${d.t}”</p></div>${i<2?'<div class="link">⬍ comparing wording</div>':""}`).join("");
+const sets=DEMO.map(d=>words(d.t));const common=[...sets[0]].filter(w=>sets.filter(s=>s.has(w)).length>=2);
+$("netOut").innerHTML=`<p>Terms shared by two or more demo reports:</p><p>${common.map(c=>`<span class="chip">${c}</span>`).join("")}</p><p>A real system would score similarity across many reports, then flag clusters for human review. This example shows the concept only and says nothing about real scams.</p>`;
+
+// report
+$("goRep").onclick=()=>{const v=$("rtext").value.trim(),out=$("repRes");
+if(v.length<10){out.innerHTML='<div class="note">Please describe what happened.</div>';return}
+const txt="Scam report ("+$("rtype").value+")\n"+mask(v);
+out.innerHTML=`<div class="card"><p>Cleaned report (nothing was sent anywhere):</p><textarea id="rout" readonly>${esc(txt)}</textarea><div class="row"><button class="btn alt" id="cp">Copy</button></div></div>`;
+$("cp").onclick=()=>{$("rout").select();try{navigator.clipboard.writeText(txt).catch(()=>document.execCommand("copy"))}catch(e){document.execCommand("copy")}$("cp").textContent="Copied"}};
+</script>
+</body>
+</html>
